@@ -80,16 +80,19 @@ console.log("Array after unshift:", teachers); // ["Anna", "Thomas", "Mads", "He
 
 // 5. Array.prototype.map
 // The map method creates a new array with the results of calling a provided function on every element in the calling array.
+// Here, it is conventional to call the singular noun in the function (e.g. teacher compared to teachers).
 const uppercasedTeachers = teachers.map(function(teacher) {
   return teacher.toUpperCase();
 });
-console.log("Array after map:", uppercasedTeachers); // ["ANNA", "THOMAS", "MADS", "HEINE", "SUSANNE"]
+console.log("uppercasedTeachers after map:", uppercasedTeachers); // ["ANNA", "THOMAS", "MADS", "HEINE", "SUSANNE"]
 
 
 
 
 // 6. Array.prototype.filter
 // The filter method creates a new array with all elements that pass the test implemented by the provided function.
+// The filter method that is meant for arrays is combined with the string method that is meant for string.
+// Other string methods include .trim(), .endsWith(), .includes()
 const filteredTeachers = teachers.filter(function(teacher) {
   return teacher.startsWith("T");
 });
@@ -103,7 +106,7 @@ console.log("Array after filter:", filteredTeachers); // ["Thomas"]
 const concatenatedTeachers = teachers.reduce(function(accumulator, teacher) {
   return accumulator + ", " + teacher;
 });
-console.log("Array after reduce:", concatenatedTeachers); // "Anna, Thomas, Mads, Heine, Susanne"
+console.log("Array (turned into string) after reduce:", concatenatedTeachers); // "Anna, Thomas, Mads, Heine, Susanne"
 
 
 
@@ -140,6 +143,7 @@ console.log("Includes 'Susanne':", includesTeacher); // true
 //11. Array.prototype.sort  
 
 // Sort in alphabetical order
+console.log("Array before sort: ", teachers);
 teachers.sort();
 console.log("Array after sort:", teachers); // ["Anna", "Heine", "Mads", "Susanne", "Thomas"]
 
@@ -147,16 +151,18 @@ console.log("Array after sort:", teachers); // ["Anna", "Heine", "Mads", "Susann
 teachers.sort().reverse();
 console.log("Array after reverse sort:", teachers); // ["Thomas", "Susanne", "Mads", "Heine", "Anna"]
 
-//sorts by student attendence going up
+// sorts funktionen er underlig på den måde, at den ændrer arrayet retrospektivt. 
+// Så selvom du logger ascending først og DERNÆST laver det descending, så vil du i begge logs se den sorteret descending.
+// sorts by student attendence going up
 let sortedTeachersAscending = teachersArrays.sort( (a, b) => {
-    return a[2]-b[2];
-})
-console.log(sortedTeachersAscending)
+    return (a[2])-(b[2]);
+});
+console.log("teachers ascending", sortedTeachersAscending);
 
 //sorts by student attendence going down
 let sortedTeachersDescending = teachersArrays.sort( (a, b) => {
     return b[2]-a[2];
-})
-console.log(sortedTeachersDescending)
+});
+console.log("teachers descending", sortedTeachersDescending)
 
 
